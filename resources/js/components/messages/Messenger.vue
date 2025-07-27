@@ -4,30 +4,32 @@
 
             <div class="d-flex flex-column h-100 position-relative">
                 <!-- Chat: Header -->
-                <chatHeader />
+                <chatHeader :conversation='conversation'/>
                 <!-- Chat: Header -->
 
                 <!-- Chat: Content -->
-                <chatContent />
+                <chatContent :messages='messages'/>
                 <!-- Chat: Content -->
 
                 <!-- Chat: Footer -->
-                <chatFooter />
+                <chatFooter :conversation='conversation' />
                 <!-- Chat: Footer -->
             </div>
 
         </div>
     </main>
-    <chatList />
 </template>
 <script>
 import chatHeader from './chatHeader.vue'
 import chatContent from './chatContent.vue'
 import chatFooter from './chatFooter.vue'
-import chatList from './chatList.vue'
 export default {
     components: {
-        chatHeader, chatContent, chatFooter , chatList
+        chatHeader, chatContent, chatFooter 
     },
-};
+    props: [
+        'conversation' , 'messages'
+    ],
+    
+   }
 </script>

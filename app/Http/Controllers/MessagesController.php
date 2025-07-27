@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Events\Message_created;
 use App\Models\conversation;
 use App\Models\recipients;
@@ -35,7 +35,20 @@ class MessagesController extends Controller
      */
   
     public function store(Request $request)
-    {
+    {   
+        // $user = Auth::user();
+        //     $images = $request->file('images');
+        //     $imagePaths = [];
+
+        //     foreach ($images as $image) {
+        //         $imagePath = $image->store('public/products');
+        //         $imagePaths[] = $imagePath;
+        //     }
+
+        // foreach ($imagePaths as $image) {
+        //     $imageUrl = env("BASE_URL").Storage::url($image);
+        //     $imageUrls[] = $imageUrl;
+        // }
         $validator = Validator::make(
             $request->all(),
             [
@@ -51,7 +64,7 @@ class MessagesController extends Controller
                         }) ,
                     'int',
                     'exists:user,id' ,
-                'body'=> 'required|text',
+                'body'=> 'required|text|file\image\max:5000',
                 #'type'=>'required|in:admin,member'#
             ]
             );

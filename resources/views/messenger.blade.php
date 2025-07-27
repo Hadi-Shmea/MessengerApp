@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    
+     <div id="chat-app">
         <!-- Layout -->
         <div class="layout overflow-hidden">
             <!-- Navigation -->
@@ -860,15 +860,15 @@
                     </div>
 
                     <!-- Chats -->
-                    <div class="tab-pane fade h-100 show active" id="tab-content-chats" role="tabpanel">
+                    {{-- <div class="tab-pane fade h-100 show active" id="tab-content-chats" role="tabpanel">
                         <div class="d-flex flex-column h-100 position-relative">
-                            <div class="hide-scrollbar">
-                            <div id="chat-list">
+                            <div class="hide-scrollbar"> --}}
+                            {{-- <div id="chat-list"> --}}
                             <chat-list />
-                            </div>    
+                            {{-- </div>    
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Notifications - Notices -->
                     <div class="tab-pane fade h-100" id="tab-content-notifications" role="tabpanel">
@@ -2221,17 +2221,17 @@
             <!-- Sidebar -->
 
             <!-- Chat -->
-            <main class="main is-visible" data-dropzone-area="">
+            {{-- <main class="main is-visible" data-dropzone-area="">
                 <div class="container h-100">
 
                     <div class="d-flex flex-column h-100 position-relative">
-                        <div id="chat-app">
-                            <Messenger />
-                        </div>
-                    </div>
+                        --}}
+                            <Messenger :conversation='conversation' :messages='messages'/>
+                        
+                    {{-- </div> --}}
 
-                </div>
-            </main>
+                {{-- </div>
+            </main> --}}
             <!-- Chat -->
 
             <!-- Chat: Info -->
@@ -3888,7 +3888,7 @@
                 </div>
             </div>
         </div>
-   
+    </div>
     <!-- Scripts -->
 
     <script src=" {{ asset('assets/js/vendor.js') }} "></script>
