@@ -9,7 +9,9 @@ const chatApp= createApp({
         return {
             conversation: null,
             messages: [],
-        }
+            userId :userId,
+            csrfToken : csrf_token
+}
     },
     methods:{
         moment(time) {

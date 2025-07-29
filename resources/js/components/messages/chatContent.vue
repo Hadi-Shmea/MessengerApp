@@ -3,7 +3,7 @@
         <div class="chat-body-inner">
             <div class="py-6 py-lg-12" id="chat-body">
                 <div v-for="message in messages" v-bind:key="message.id" class="message"
-                    :class="{ 'message-out': message.user_id == userId }">
+                    :class="{ 'message-out': message.user_id == $root.userId }">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modal-profile" class="avatar avatar-responsive">
                         <img class="avatar-img" v-bind:src="message.user.avatar_url" alt="">
                     </a>
@@ -105,15 +105,16 @@
 <script>
 export default {
     props: [
-        'conversation'
+        'conversation',
+         'userId',
     ],
     data() {
         return {
             messages: [],
-            fetched: false
+            fetched: 0
         }
     },
-    mounted() {
+    mounted() { 
         if (this.conversation) {
             fetch(`api/conversations/${this.conversation.id}/messages`)
                 .then(response => response.json())
@@ -123,11 +124,12 @@ export default {
         }
     },
     updated() {
-        if (this.conversation && !this.fetched) {
+        if (this.conversation && this.fetched != this.conversation.id) {
             fetch(`api/conversations/${this.conversation.id}/messages`)
                 .then(response => response.json())
                 .then(json => {
                     this.messages = json.messages.data
+                    this.fetched = this.conversation.id
                 })
             this.fetched = true
         }

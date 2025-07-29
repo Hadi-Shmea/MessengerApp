@@ -23,7 +23,7 @@
 </head>
 
 <body>
-     <div id="chat-app">
+    <div id="chat-app">
         <!-- Layout -->
         <div class="layout overflow-hidden">
             <!-- Navigation -->
@@ -863,9 +863,9 @@
                     {{-- <div class="tab-pane fade h-100 show active" id="tab-content-chats" role="tabpanel">
                         <div class="d-flex flex-column h-100 position-relative">
                             <div class="hide-scrollbar"> --}}
-                            {{-- <div id="chat-list"> --}}
-                            <chat-list />
-                            {{-- </div>    
+                    {{-- <div id="chat-list"> --}}
+                    <chat-list />
+                    {{-- </div>    
                             </div>
                         </div>
                     </div> --}}
@@ -1239,8 +1239,7 @@
                                                                         width="24" height="24"
                                                                         viewBox="0 0 24 24" fill="none"
                                                                         stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
                                                                         class="feather feather-more-horizontal">
                                                                         <circle cx="12" cy="12" r="1">
                                                                         </circle>
@@ -1278,9 +1277,8 @@
 
                                                             <div
                                                                 class="badge badge-circle bg-primary border-outline position-absolute bottom-0 end-0">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none"
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24" fill="none"
                                                                     stroke="currentColor" stroke-width="2"
                                                                     stroke-linecap="round" stroke-linejoin="round"
                                                                     class="feather feather-message-circle">
@@ -2226,11 +2224,11 @@
 
                     <div class="d-flex flex-column h-100 position-relative">
                         --}}
-                            <Messenger :conversation='conversation' :messages='messages'/>
-                        
-                    {{-- </div> --}}
+            <Messenger :conversation='conversation' :messages='messages' />
 
-                {{-- </div>
+            {{-- </div> --}}
+
+            {{-- </div>
             </main> --}}
             <!-- Chat -->
 
@@ -3896,15 +3894,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src=" {{ asset('/assets/js/moment.js') }} "></script>
     {{-- <script type="module" src=" {{ asset ('/build/assets/vue-C1PzJ-uJ.js') }} "></script> 
-        <script type="module" src=" {{ asset ('build/assets/messages-DuqfidBh.js') }} "></script> 
-        <script  src=" {{ asset ('js/messages.js') }} "></script>  --}}
-
+    <script type="module" src=" {{ asset ('build/assets/messages-DuqfidBh.js') }} "></script> --}} 
+    
     {{-- <script src=" {{ asset ('/assets/js/messages.js') }} "></script>  --}}
-
+    
     <script>
         const userId = "{{ Auth::id() }}";
         const csrf_token = "{{ csrf_token() }}";
-    </script>
+        </script>
+        {{-- <script  src=" {{ asset ('js/messages.js') }} "></script>  --}}
     {{-- <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
             
                // Enable pusher logging - don't include this in production

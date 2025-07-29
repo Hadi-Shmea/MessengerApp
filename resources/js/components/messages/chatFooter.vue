@@ -8,8 +8,8 @@
         <!-- Chat: Form -->
         <form class="chat-form rounded-pill bg-dark" data-emoji-form="" method="post"
             action="/api/messages">
-            <input type="hidden" name="_token" :value="csrf_token">
-            <input type="hidden" name="conversation_id">
+            <input type="hidden" name="_token" :value="$root.csrfToken">
+            <input type="hidden" name="conversation_id" :value="conversation?conversation.id: 0 "></input>
             <div class="row align-items-center gx-0">
                 <div class="col-auto">
                     <a href="#" class="btn btn-icon btn-link text-body rounded-circle" id="dz-btn">
@@ -59,5 +59,9 @@
     </div>
 </template>
 <script>
-    export default {};
+    export default {
+        props: [
+            'conversation'
+        ], 
+    };
 </script>
