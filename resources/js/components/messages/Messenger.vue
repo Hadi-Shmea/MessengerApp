@@ -8,7 +8,7 @@
                 <!-- Chat: Header -->
 
                 <!-- Chat: Content -->
-                <chatContent :messages='messages'/>
+                <chatContent :conversation='conversation'/>
                 <!-- Chat: Content -->
 
                 <!-- Chat: Footer -->

@@ -11,6 +11,11 @@ const chatApp= createApp({
             messages: [],
         }
     },
+    methods:{
+        moment(time) {
+            return moment(time);
+        },
+    }
 })
 chatApp.component('chatList',chatList);
 chatApp.component('Messenger',Messenger);

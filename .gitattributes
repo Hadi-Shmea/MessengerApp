@@ -1,11 +1,31 @@
+# Ensure all files use LF endings
 * text=auto eol=lf
 
+# Explicit line endings for these types
+*.vue text eol=lf
+*.js text eol=lf
+
+# Custom diffs
 *.blade.php diff=html
 *.css diff=css
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
 
+# Exclude from export
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+
+# * text=auto eol=lf
+
+# *.blade.php diff=html
+# *.css diff=css
+# *.html diff=html
+# *.md diff=markdown
+# *.php diff=php
+
+# /.github export-ignore
+# CHANGELOG.md export-ignore
+# .styleci.yml export-ignore
