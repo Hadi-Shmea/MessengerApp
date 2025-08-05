@@ -2,7 +2,7 @@
     <div class="chat-body hide-scrollbar flex-1 h-100">
         <div class="chat-body-inner">
             <div class="py-6 py-lg-12" id="chat-body">
-                <div v-for="message in messages" v-bind:key="message.id" class="message"
+                <div v-for="message in $root.messages" v-bind:key="message.id" class="message"
                     :class="{ 'message-out': message.user_id == $root.userId }">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modal-profile" class="avatar avatar-responsive">
                         <img class="avatar-img" v-bind:src="message.user.avatar_url" alt="">
@@ -12,7 +12,7 @@
                         <div class="message-body">
                             <div class="message-content">
                                 <div class="message-text">
-
+                                    
 
                                     <p>{{ message.body }}</p>
                                 </div>
@@ -110,8 +110,8 @@ export default {
     ],
     data() {
         return {
+            fetched: 0,
             messages: [],
-            fetched: 0
         }
     },
     mounted() { 
@@ -119,7 +119,7 @@ export default {
             fetch(`api/conversations/${this.conversation.id}/messages`)
                 .then(response => response.json())
                 .then(json => {
-                    this.messages = json.messages.data
+                    this.$root.messages = json.messages.data
                 })
         }
     },
@@ -128,8 +128,8 @@ export default {
             fetch(`api/conversations/${this.conversation.id}/messages`)
                 .then(response => response.json())
                 .then(json => {
-                    this.messages = json.messages.data
-                    this.fetched = this.conversation.id
+                    this.$root.messages = json.messages.data;
+                    this.fetched = this.conversation.id;
                 })
             this.fetched = true
         }

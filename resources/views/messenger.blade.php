@@ -2224,7 +2224,7 @@
 
                     <div class="d-flex flex-column h-100 position-relative">
                         --}}
-            <Messenger :conversation='conversation' :messages='messages' />
+            <Messenger :conversation='conversation' />
 
             {{-- </div> --}}
 
@@ -3893,35 +3893,31 @@
     <script src=" {{ asset('/assets/js/template.js') }} "></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src=" {{ asset('/assets/js/moment.js') }} "></script>
-    {{-- <script type="module" src=" {{ asset ('/build/assets/vue-C1PzJ-uJ.js') }} "></script> 
-    <script type="module" src=" {{ asset ('build/assets/messages-DuqfidBh.js') }} "></script> --}} 
-    
-    {{-- <script src=" {{ asset ('/assets/js/messages.js') }} "></script>  --}}
-    
     <script>
         const userId = "{{ Auth::id() }}";
         const csrf_token = "{{ csrf_token() }}";
-        </script>
-        {{-- <script  src=" {{ asset ('js/messages.js') }} "></script>  --}}
-    {{-- <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
-            
-               // Enable pusher logging - don't include this in production
-               Pusher.logToConsole = true;
-            
-               var pusher = new Pusher('757b9cc541aeb7196a59', {
-                      cluster: 'ap2',
-                       //this route make sure if i had the right to listen to this channel presence-Messenger.${userId}
-                       authEndpoint: '/broadcasting/auth',
-                       encrypted: true
-                     // app_id : "1979947",
-         // secret : "26477e7406a335a67e9d",
-       });
-     //if the channel is a private channel we put private-Messenger.${userId}
-       var channel = pusher.subscribe(`presence-Messenger.${userId}`);
-       channel.bind('new-message', function(data) {
-         addMessage(data.message);
-       }); --}}
+    </script>
+    <script src=" {{ asset('js/messages.js') }} "></script>
+    <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <script>
+        // Enable pusher logging - don't include this in production
+    //     Pusher.logToConsole = true;
 
+    //     var pusher = new Pusher('757b9cc541aeb7196a59', {
+    //         cluster: 'ap2',
+    //         //this route make sure if i had the right to listen to this channel presence-Messenger.${userId}
+    //         authEndpoint: '/broadcasting/auth',
+    //         encrypted: true
+    //         // app_id : "1979947",
+    //         // secret : "26477e7406a335a67e9d",
+    //     });
+    //     //if the channel is a private channel we put private-Messenger.${userId}
+    //     var channel = pusher.subscribe(`presence-Messenger.${userId}`);
+    //     channel.bind('new-message', function(data) {
+    //         addMessage(data.message);
+    //     });
+    // 
+    </script>
 </body>
 
 </html>

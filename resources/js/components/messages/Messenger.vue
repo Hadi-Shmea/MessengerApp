@@ -4,11 +4,11 @@
 
             <div class="d-flex flex-column h-100 position-relative">
                 <!-- Chat: Header -->
-                <chatHeader :conversation='conversation'/>
+                <chatHeader :conversation='conversation' />
                 <!-- Chat: Header -->
 
                 <!-- Chat: Content -->
-                <chatContent :conversation='conversation'/>
+                <chatContent :conversation='conversation' />
                 <!-- Chat: Content -->
 
                 <!-- Chat: Footer -->
@@ -25,11 +25,15 @@ import chatContent from './chatContent.vue'
 import chatFooter from './chatFooter.vue'
 export default {
     components: {
-        chatHeader, chatContent, chatFooter 
+        chatHeader, chatContent, chatFooter
     },
     props: [
-        'conversation' , 'messages'
+        'conversation', 'messages'
     ],
-    
-   }
+    data() {
+        return {
+            messages: [],
+        };
+    },
+}
 </script>

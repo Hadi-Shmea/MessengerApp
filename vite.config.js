@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
+
+
 import path from 'path';
 
 export default defineConfig({
@@ -17,6 +19,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      '@': '/resources/js',
       // 👇 This line is crucial for template compilation at runtime
       'vue': 'vue/dist/vue.esm-bundler.js',
     },

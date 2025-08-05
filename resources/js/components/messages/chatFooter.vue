@@ -6,10 +6,10 @@
         <!-- Chat: Files -->
 
         <!-- Chat: Form -->
-        <form class="chat-form rounded-pill bg-dark" data-emoji-form="" method="post"
-            action="/api/messages">
+        <form class="chat-form rounded-pill bg-dark" data-emoji-form="" method="post" action="/api/messages"
+            @submit.prevent="sendMessage()">
             <input type="hidden" name="_token" :value="$root.csrfToken">
-            <input type="hidden" name="conversation_id" :value="conversation?conversation.id: 0 "></input>
+            <input type="hidden" name="conversation_id" :value="conversation ? conversation.id : 0"></input>
             <div class="row align-items-center gx-0">
                 <div class="col-auto">
                     <a href="#" class="btn btn-icon btn-link text-body rounded-circle" id="dz-btn">
@@ -25,8 +25,9 @@
 
                 <div class="col">
                     <div class="input-group">
-                        <textarea name="message" class="form-control px-0" placeholder="Type your message..." rows="1"
-                            data-emoji-input="" data-autosize="true"></textarea>
+                        <textarea name="message" v-model="message" class="form-control px-0"
+                            placeholder="Type your message..." rows="1" data-emoji-input=""
+                            data-autosize="true"></textarea>
 
                         <a href="#" class="input-group-text text-body pe-0" data-emoji-btn="">
                             <span class="icon icon-lg">
@@ -59,9 +60,37 @@
     </div>
 </template>
 <script>
-    export default {
-        props: [
-            'conversation'
-        ], 
-    };
+export default {
+    props: [
+        'conversation'
+    ],
+    data() {
+        return {
+            message: 'enter your message here',
+        };
+    },
+    methods: {
+        sendMessage() {
+            let data = {
+                message: this.message,
+                conversation_id: this.conversation ? this.conversation.id : 0 ,
+                _token: this.$root.csrfToken,
+
+            }
+            fetch('/api/messages', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            }).then(response => response.json())
+                .then(json => {
+                    this.$root.messages.push(json)
+                })
+                this.message = '';
+
+        },
+    },
+}
 </script>
